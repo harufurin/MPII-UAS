@@ -8,6 +8,9 @@ Ujian Akhir Semester Mobile Programming II
 - 🧩 Manajemen State (Redux / Zustand / Context API)
 - 📱 Works on Android
 
+## 🔑 Kredensial
+Cek `main.js` untuk aksesnya
+
 ## 🛠️ Installation
 ```bash
 # Clone the repository
