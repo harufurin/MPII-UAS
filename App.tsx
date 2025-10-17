@@ -1,20 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { createStaticNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './app/screens/Login';
+import HomeScreen from './app/screens/Home';
+import UsersScreen from './app/screens/Users';
+// import ProductsScreen from './app/screens/Products';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootStack = createNativeStackNavigator({
+  screens: {
+    Login: {
+      screen: LoginScreen,
+      options: { headerShown: false },
+    },
+    Home: {
+      screen: HomeScreen,
+      options: { headerTitle: 'Welcome' },
+    },
+    Users: {
+      screen: UsersScreen,
+      options: { headerTitle: 'Users List'}
+    },
+    // Products: {
+    //   screen: ProductsScreen,
+    //   options: { headerTitle: 'Products List'}
+    // }
   },
 });
+
+const Navigation = createStaticNavigation(RootStack);
+
+export default function App() {
+  return <Navigation />;
+}
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//           name="Login"
+//           component={LoginScreen}
+//           options={{ headerShown: false }}
+//         />
+//         <Stack.Screen
+//           name="Home"
+//           component={HomeScreen}
+//           options={{ headerShown: true, title: "Welcome" }}
+//         />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
